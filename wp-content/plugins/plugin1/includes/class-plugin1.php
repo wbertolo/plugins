@@ -13,9 +13,8 @@ class Plugin1 {
 
     public function init() {
         load_plugin_textdomain( 'plugin-1', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); // for translation
-
         add_shortcode( 'plugin1', 'plugin1_shortcode' );
-
+        add_action( 'wp_enqueue_scripts', 'register_scripts' );
     }
 
 }

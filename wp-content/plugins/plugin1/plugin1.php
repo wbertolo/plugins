@@ -29,6 +29,5 @@ require_once PLUGIN_1__DIR . 'includes/class-plugin1.php';
 // Initialize the plugin
 function run_PLUGIN_1() {
     $plugin = new Plugin1();
-    // $plugin->run();
 }
 run_PLUGIN_1();

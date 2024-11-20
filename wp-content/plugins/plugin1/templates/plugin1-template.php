@@ -6,6 +6,7 @@
  */
 ?>
 <div class="plugin1">
-    <h2>Welcome to Plugin 1</h2>
-    <p>some text</p>
+    <h2><?php echo esc_html( $title ); ?></h2>
+    <p><?php echo esc_html( $content ); ?></p>
+    <img src="<?php echo esc_attr( $image ); ?>" alt="<?php echo esc_attr( $alt ); ?>" /> 
 </div>

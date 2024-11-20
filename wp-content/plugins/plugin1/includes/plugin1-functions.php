@@ -5,15 +5,46 @@
  * @package Plugin1
  */
 
- function plugin1_shortcode( $atts ) {
+
+function plugin1_shortcode( $atts ) {
 
 	$atts = shortcode_atts(
         array(
-            'message' => 'Plugin1 here', // Default message
+            'title' => 'my title',
+            'content' => 'my content',
+            'image' => 'https://followthislight.com/wp-content/uploads/2023/12/PXL_20231202_100316332-1200x900.jpg',
+            "alt" => 'italy'
         ),
         $atts,
-        'your_shortcode' // Shortcode tag
+        'plugin1'
     );
 
-	return '<div class="plugin1-message">' . esc_html( $atts['message'] ) . '</div>';
+	return plugin1_render_template( $atts );
  }
+
+ // Register Scripts
+function register_scripts() {
+	// Theme stylesheet.
+	wp_register_style( 'styles', PLUGIN_1__URL . '/dist/css/style.min.css', '', filemtime( PLUGIN_1__DIR . 'dist/css/style.min.css' ) );
+	wp_enqueue_style( 'styles' );
+
+	// Global scripts.
+	wp_register_script( 'scripts', PLUGIN_1__URL . '/dist/js/bundle.min.js', '', filemtime( PLUGIN_1__DIR . 'dist/js/bundle.min.js' ), true );
+	wp_enqueue_script( 'scripts' );
+}
+
+
+// Renders the template
+function plugin1_render_template( $attributes ) {
+    // Extract attributes passed to the block (if using Gutenberg block).
+    $title = isset( $attributes['title'] ) ? $attributes['title'] : 'default itle';
+    $content = isset( $attributes['content'] ) ? $attributes['content'] : 'default content.';
+    $image = isset( $attributes['image'] ) ? $attributes['image'] : 'default image URL';
+    $alt = isset( $attributes['alt'] ) ? $attributes['alt'] : 'default alt';
+
+    // Start output buffering to capture the template's output.
+    ob_start();
+    include PLUGIN_1__DIR . 'templates/plugin1-template.php';
+    return ob_get_clean();
+}
+ 
