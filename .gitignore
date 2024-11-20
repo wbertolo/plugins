@@ -17,6 +17,9 @@
 /wp-*.php
 /xmlrpc.php
 
+# Docker 
+/docker
+
 # Configuration
 wp-config.php
 
