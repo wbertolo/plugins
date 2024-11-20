@@ -597,6 +597,14 @@ video {
   width: 50%;
 }
 
+.w-9\/12 {
+  width: 75%;
+}
+
+.w-full {
+  width: 100%;
+}
+
 .basis-2\/4 {
   flex-basis: 50%;
 }

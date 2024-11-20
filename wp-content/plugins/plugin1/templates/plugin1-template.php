@@ -12,12 +12,15 @@
             
             <!-- var setup for each post -->
             <?php $post = $post['node']; ?>
-            
+            <?php if ( isset( $post['featuredImage'] ) ) : ?>
+                <?php $featuredImage = $post['featuredImage']['node']; ?>
+            <?php else : ?>
+                <?php $featuredImage = null; ?>
+            <?php endif; ?>
             <!-- display -->
             <h2 class="font-bold text-blue-900 mb-3"><?php echo esc_html( $post['title'] ); ?></h2>
-            <?php if ( isset( $featuredImage['sourceUrl'] ) ) : ?>
-                <?php $featuredImage = $post['featuredImage']['node']; ?>
-                <img class="w-6/12 mb-5" src="<?php echo esc_attr( $featuredImage['sourceUrl'] ); ?>" alt="<?php echo esc_attr( $featuredImage['altText'] ); ?>" />
+            <?php if ( isset( $featuredImage ) ) : ?>
+                <img class="w-full mb-5" src="<?php echo esc_attr( $featuredImage['sourceUrl'] ); ?>" alt="<?php echo esc_attr( $featuredImage['altText'] ); ?>" />
             <?php endif; ?>
             <div class="text-lg"><?php echo $post['excerpt']; ?></div>
 
