@@ -22,6 +22,7 @@ define( 'PLUGIN_1__DIR', plugin_dir_path( __FILE__ ) ); // path
 define( 'PLUGIN_1__URL', plugin_dir_url( __FILE__ ) ); // url
 
 // Includes
+require_once PLUGIN_1__DIR . 'includes/api.php';
 require_once PLUGIN_1__DIR . 'includes/plugin1-functions.php';
 require_once PLUGIN_1__DIR . 'includes/class-plugin1.php';
 
