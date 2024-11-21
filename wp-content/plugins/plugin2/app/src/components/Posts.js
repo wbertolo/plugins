@@ -51,7 +51,7 @@ export default function Posts() {
 
   return (
 	<div className="plugin2 bg-slate-300 py-8 px-4 md:p-8">
-	  <h2 class="font-bold mb-5">Posts from This Light</h2>
+	  <h2 class="font-bold text-black mb-5">Posts from This Light</h2>
 	  <div className="flex flex-row flex-wrap justify-between">
 		{posts.map(({ node: post }) => (
 		  <div key={post.id} className="plugin2Box bg-white p-7 my-3 border rounded-md shadow-sm shadow-slate-500 basis-[100%] md:basis-[48%]">
@@ -64,7 +64,7 @@ export default function Posts() {
 				className="w-full mb-5"
 			  />
 			)}
-			<p className="text-lg" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
+			<p className="text-lg text-black" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
 		  </div>
 		))}
 	  </div>
