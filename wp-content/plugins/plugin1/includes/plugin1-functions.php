@@ -5,15 +5,38 @@
  * @package Plugin1
  */
 
- function plugin1_shortcode( $atts ) {
+/**
+ * Gets the posts.
+ *
+ * @return string The rendered HTML content for the shortcode.
+ */
+function plugin1_shortcode() {
+	return plugin1_render_template( plugin1_get_graphql_posts() );
+}
 
-	$atts = shortcode_atts(
-        array(
-            'message' => 'Plugin1 here', // Default message
-        ),
-        $atts,
-        'your_shortcode' // Shortcode tag
-    );
+/**
+ * Register the plugin scripts
+ */
+function register_scripts() {
 
-	return '<div class="plugin1-message">' . esc_html( $atts['message'] ) . '</div>';
- }
+	// Theme stylesheet.
+	wp_register_style( 'styles', PLUGIN_1__URL . '/dist/css/style.min.css', '', filemtime( PLUGIN_1__DIR . 'dist/css/style.min.css' ) );
+	wp_enqueue_style( 'styles' );
+
+	// Global scripts.
+	wp_register_script( 'scripts', PLUGIN_1__URL . '/dist/js/bundle.min.js', '', filemtime( PLUGIN_1__DIR . 'dist/js/bundle.min.js' ), true );
+	wp_enqueue_script( 'scripts' );
+}
+
+
+/**
+ * Renders the plugin template with the given posts.
+ *
+ * @return string The rendered HTML content from the template.
+ */
+// @codingStandardsIgnoreLine
+function plugin1_render_template( $posts ) {
+	ob_start();
+	include PLUGIN_1__DIR . 'templates/plugin1-template.php';
+	return ob_get_clean();
+}

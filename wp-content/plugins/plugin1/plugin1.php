@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Plugin 1
- * Description: An experimental project for tbk.
+ * Description: A PHP experimental project for tbk.
  * Version: 1.0.0
  * Author: William Bertolo
  * Author URI: https://github.com/wbertolo/
@@ -11,24 +11,26 @@
  * @package Plugin1
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
-// Constants
+// Constants.
 define( 'PLUGIN_1_VERSION', '1.0.0' );
-define( 'PLUGIN_1__DIR', plugin_dir_path( __FILE__ ) );
-define( 'PLUGIN_1__URL', plugin_dir_url( __FILE__ ) );
+define( 'PLUGIN_1__DIR', plugin_dir_path( __FILE__ ) ); // path.
+define( 'PLUGIN_1__URL', plugin_dir_url( __FILE__ ) ); // url.
 
-// Includes
+// Includes.
+require_once PLUGIN_1__DIR . 'includes/api.php';
 require_once PLUGIN_1__DIR . 'includes/plugin1-functions.php';
 require_once PLUGIN_1__DIR . 'includes/class-plugin1.php';
 
 
-// Initialize the plugin
-function run_PLUGIN_1_() {
-    $plugin = new Plugin1();
-    $plugin->run();
+/**
+ * Initialize the plugin.
+ */
+function run_plugin_1() {
+	$plugin = new Plugin1();
 }
-run_PLUGIN_1_();
+run_plugin_1();

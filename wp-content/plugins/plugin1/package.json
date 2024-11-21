@@ -1,0 +1,40 @@
+{
+  "name": "custom-wp-plugin",
+  "version": "1.0.0",
+  "description": "Custom WordPress Plugin with Tailwind CSS, minified CSS, and JavaScript optimization.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./src/css/style.css -o ./dist/css/style.min.css --minify",
+    "lint:js": "eslint ./src/js/**/*.js",
+    "build:js": "rollup ./src/js/main.js --file ./dist/js/bundle.min.js --format iife --plugins @rollup/plugin-terser",
+    "build": "npm run build:css && npm run build:js",
+    "watch:css": "npx tailwindcss -i ./src/css/style.css -o ./dist/css/style.min.css --watch",
+    "start": "npm run watch:css"
+  },
+  "author": "Your Name",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
+    "eslint": "^8.49.0",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "rollup": "^3.25.0",
+    "tailwindcss": "^3.3.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "rules": {
+      "semi": ["error", "always"],
+      "quotes": ["error", "double"]
+    }
+  }
+}
