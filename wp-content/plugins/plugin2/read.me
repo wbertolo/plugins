@@ -1,0 +1,28 @@
+# Plugin 1
+
+## Description
+A code assessment for tbk in PHP.
+
+## Notes
+If you download the whole repo, there will be additional steps: building docker, creating a database and updating wp-config with your database info.
+If you have a running WordPress Installation, grab the plugin folders from this repo and drop them on your installation (recommended).
+
+## Installation
+1. If you haven't pulled the whole repo, upload the plugin files to the `/wp-content/plugins/plugin1/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. The `dist` CSS and JS files are part of the repo, so running npm is unnecessary.
+
+## Usage
+1. In any WordPress page, insert the shortcode `[plugin1]`.
+2. Load the page. It should display the first 10 posts from https://followthislight.com/blog/. 
+
+
+## If you want to use PHP Code Sniffer
+1. Run `composer install`.
+2. Run `composer phpcs`.
+3. Confirm no errors are logged. The only exception is errors related to the CLRF/LF format (always logged to line 1), depending on your OS. This plugin was originally developed in Windows. 
+
+
+## Changelog
+### 1.0.0
+- Initial release.
