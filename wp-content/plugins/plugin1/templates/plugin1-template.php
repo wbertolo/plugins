@@ -10,7 +10,7 @@
 
 <div class="plugin1 bg-slate-300 py-8 px-4 md:p-8">
 
-	<h2 class="font-bold mb-5">Posts from This Light</h2>
+	<h2 class="font-bold text-black mb-5">Posts from This Light</h2>
 
 	<div class="flex flex-row flex-wrap justify-between">
 		
@@ -30,7 +30,7 @@
 				<?php if ( isset( $featured_image ) ) : ?>
 					<img class="w-full mb-5" src="<?php echo esc_attr( $featured_image['sourceUrl'] ); ?>" alt="<?php echo esc_attr( $featured_image['altText'] ); ?>" />
 				<?php endif; ?>
-				<div class="text-lg">
+				<div class="text-lg text-black">
 					<?php echo wp_kses( $post_item['excerpt'], array() ); ?>
 				</div>
 
