@@ -18,11 +18,9 @@ function plugin1_shortcode() {
  * Register the plugin scripts
  */
 function register_scripts() {
-
-	// Theme stylesheet.
-	wp_register_style( 'styles', PLUGIN_1__URL . '/dist/css/style.min.css', '', filemtime( PLUGIN_1__DIR . 'dist/css/style.min.css' ) );
-	wp_enqueue_style( 'styles' );
-
+	// Plugin 1 stylesheet.
+	wp_register_style( 'plugin1-styles', PLUGIN_1__URL . 'dist/css/style.min.css', array(), filemtime( PLUGIN_1__DIR . 'dist/css/style.min.css' ) );
+	wp_enqueue_style( 'plugin1-styles' );
 }
 
 

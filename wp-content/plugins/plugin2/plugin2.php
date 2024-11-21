@@ -38,7 +38,7 @@ function enqueue_scripts() {
 	// Enqueue main runtime and chunks.
 	if ( isset( $manifest['files']['main.js'] ) ) {
 		wp_enqueue_script(
-			'react-runtime',
+			'plugin2-scripts',
 			plugins_url( 'app/build/' . $manifest['files']['main.js'], __FILE__ ),
 			array(),
 			filemtime( PLUGIN_2__DIR . 'app/build' . $manifest['files']['main.js'] ),
@@ -49,7 +49,7 @@ function enqueue_scripts() {
 	// CSS.
 	if ( isset( $manifest['files']['main.css'] ) ) {
 		wp_enqueue_style(
-			'react-style',
+			'plugin2-styles',
 			plugins_url( 'app/build/' . $manifest['files']['main.css'], __FILE__ ),
 			'',
 			filemtime( PLUGIN_2__DIR . 'app/build' . $manifest['files']['main.css'] )

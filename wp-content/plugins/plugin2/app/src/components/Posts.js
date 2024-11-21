@@ -14,19 +14,25 @@ export default function Posts() {
 			const query = gql`
 			query Posts {
 				posts(first: 10) {
-				edges {
+					edges {
 					node {
-					id
-					title
-					excerpt
-					featuredImage {
+						id
+						title
+						excerpt
+						featuredImage {
 						node {
-						altText
-						sourceUrl
+							altText
+							sourceUrl,
+							mediaDetails {
+								sizes {
+									name
+									sourceUrl
+								}
+							}
+						}
 						}
 					}
 					}
-				}
 				}
 			}
 			`;
@@ -58,10 +64,12 @@ export default function Posts() {
 			<h3 className="font-bold text-blue-900 mb-3">{post.title}</h3>
 			{post.featuredImage && (
 			  <img
-				src={post.featuredImage.node.sourceUrl}
+				src={
+					post.featuredImage.node.mediaDetails?.sizes?.find(size => size.name === 'medium')?.sourceUrl || 
+      				post.featuredImage.node.sourceUrl
+				}
 				alt={post.featuredImage.node.altText || 'Post Image'}
-				style={{ maxWidth: '100px' }}
-				className="w-full mb-5"
+				className="w-full mb-5 max-w-[300px]"
 			  />
 			)}
 			<p className="text-lg text-black" dangerouslySetInnerHTML={{ __html: post.excerpt }} />
