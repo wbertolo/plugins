@@ -1,12 +1,13 @@
 /* global wpData */
 import React, { useEffect, useState } from 'react';
+import Posts from './components/Posts';
 import './App.css';
 
 function App() {
 
   // const [posts, setPosts] = useState([]);
   // const wpData = window.wpData || { restUrl: '', nonce: '' };
-  console.log('test');
+  console.log('6');
   // useEffect(() => {
   //     fetch(wpData.restUrl + 'wp/v2/posts', {
   //         method: 'GET',
@@ -22,12 +23,7 @@ function App() {
 
   return (
     <div>
-        <h1>Posts from This Light</h1>
-        <ul>
-            {/* {posts.map((post) => (
-                <li key={post.id}>{post.title.rendered}</li>
-            ))} */}
-        </ul>
+        <Posts />
     </div>
   );
 }
