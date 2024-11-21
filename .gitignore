@@ -18,6 +18,7 @@
 /xmlrpc.php
 
 node_modules
+vendor
 
 # Docker 
 /docker
