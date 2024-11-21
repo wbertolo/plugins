@@ -50,11 +50,11 @@ export default function Posts() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-	<div className="plugin2">
-	  <h2>Posts from This Light</h2>
+	<div className="plugin2 bg-slate-300 py-8 px-4 md:p-8">
+	  <h2 class="font-bold mb-5">Posts from This Light</h2>
 	  <div className="flex flex-row flex-wrap justify-between">
 		{posts.map(({ node: post }) => (
-		  <div key={post.id} className="plugin2Box p-7 my-3 border rounded-md shadow-sm shadow-slate-500 basis-[100%] md:basis-[48%]">
+		  <div key={post.id} className="plugin2Box bg-white p-7 my-3 border rounded-md shadow-sm shadow-slate-500 basis-[100%] md:basis-[48%]">
 			<h3 className="font-bold text-blue-900 mb-3">{post.title}</h3>
 			{post.featuredImage && (
 			  <img
