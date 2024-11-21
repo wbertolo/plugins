@@ -7,7 +7,7 @@
 
 /**
  * Gets the posts.
- * 
+ *
  * @return array Post collection data.
  */
 function plugin1_get_graphql_posts() {
@@ -33,7 +33,7 @@ function plugin1_get_graphql_posts() {
 
 	$graphql_url = 'https://followthislight.com/graphql';
 
-	$body = json_encode(
+	$body = wp_json_encode(
 		array(
 			'query' => $query,
 		)

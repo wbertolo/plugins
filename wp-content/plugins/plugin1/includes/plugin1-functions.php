@@ -7,12 +7,10 @@
 
 /**
  * Gets the posts.
- * 
- * @param array $atts Shortcode attributes passed to the plugin.
- * 
+ *
  * @return string The rendered HTML content for the shortcode.
  */
-function plugin1_shortcode( $atts ) {
+function plugin1_shortcode() {
 	return plugin1_render_template( plugin1_get_graphql_posts() );
 }
 
@@ -34,10 +32,9 @@ function register_scripts() {
 /**
  * Renders the plugin template with the given posts.
  *
- * @param array $posts An array of posts to be rendered in the template.
- *
  * @return string The rendered HTML content from the template.
  */
+// @codingStandardsIgnoreLine
 function plugin1_render_template( $posts ) {
 	ob_start();
 	include PLUGIN_1__DIR . 'templates/plugin1-template.php';

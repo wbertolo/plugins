@@ -20,8 +20,8 @@
         }
     },
     "scripts": {
-        "phpcs": "powershell -Command \"Get-ChildItem -Recurse -Filter '*.php' | Where-Object { $_.FullName -notmatch 'vendor' } | ForEach-Object { & 'vendor/bin/phpcs' --standard=WordPress $_.FullName }\"",
-        "phpcbf": "powershell -Command \"Get-ChildItem -Recurse -Filter '*.php' | Where-Object { $_.FullName -notmatch 'vendor' } | ForEach-Object { & 'vendor/bin/phpcbf' --standard=WordPress $_.FullName }\""
+        "phpcs": "powershell -Command \"Get-ChildItem -Recurse -Filter '*.php' | Where-Object { $_.FullName -notmatch 'vendor' } | ForEach-Object { & 'vendor/bin/phpcs' --standard=WordPress --ignore=*/node_modules/* $_.FullName }\"",
+        "phpcbf": "powershell -Command \"Get-ChildItem -Recurse -Filter '*.php' | Where-Object { $_.FullName -notmatch 'vendor' } | ForEach-Object { & 'vendor/bin/phpcbf' --standard=WordPress --ignore=*/node_modules/* $_.FullName }\""
     },
     "require": {
         "php": "^7.4 || ^8.0"
