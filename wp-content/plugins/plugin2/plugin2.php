@@ -31,6 +31,8 @@ function enqueue_scripts() {
 	if ( ! file_exists( $manifest_path ) ) {
 		return; // manifest doesn't exist.
 	}
+
+	// @codingStandardsIgnoreLine
 	$manifest = json_decode( file_get_contents( $manifest_path ), true );
 
 	// Enqueue main runtime and chunks.
