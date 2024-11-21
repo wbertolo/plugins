@@ -4,10 +4,9 @@ import Posts from './components/Posts';
 import './App.css';
 
 function App() {
-
 	return (
 		<div>
-				<Posts />
+			<Posts />
 		</div>
 	);
 }
