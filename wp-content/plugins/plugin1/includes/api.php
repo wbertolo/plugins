@@ -23,7 +23,13 @@ function plugin1_get_graphql_posts() {
             featuredImage {
               node {
                 altText
-                sourceUrl
+                sourceUrl,
+				mediaDetails {
+					sizes {
+						name
+						sourceUrl
+					}
+				}
               }
             }
           }
