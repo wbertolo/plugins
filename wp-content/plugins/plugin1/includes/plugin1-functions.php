@@ -23,9 +23,6 @@ function register_scripts() {
 	wp_register_style( 'styles', PLUGIN_1__URL . '/dist/css/style.min.css', '', filemtime( PLUGIN_1__DIR . 'dist/css/style.min.css' ) );
 	wp_enqueue_style( 'styles' );
 
-	// Global scripts.
-	wp_register_script( 'scripts', PLUGIN_1__URL . '/dist/js/bundle.min.js', '', filemtime( PLUGIN_1__DIR . 'dist/js/bundle.min.js' ), true );
-	wp_enqueue_script( 'scripts' );
 }
 
 

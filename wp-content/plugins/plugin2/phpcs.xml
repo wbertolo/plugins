@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<phpcs>
+	<config name="default_standard" value="WordPress" />
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+</phpcs>
