@@ -5,7 +5,6 @@
  * @package SpruceBeerDashboard
  */
 
-
 /**
  * Fetch beer information by beer ID.
  *
@@ -16,19 +15,19 @@ function sbd_get_beer_by_id( $beer_id ) {
 
 	// Validate the beer ID.
 	if ( empty( $beer_id ) || ! is_numeric( $beer_id ) ) {
-		error_log( 'Invalid Beer ID provided.' );
+		log( 'Invalid Beer ID provided.' );
 		return false;
 	}
 
-	// Call the Untappd API using the untappd_api_request function
+	// Call the Untappd API using the untappd_api_request function.
 	$response = sbd_api_request( "beer/info/$beer_id" );
 
-	// Return the response or handle errors
+	// Return the response or handle errors.
 	if ( $response ) {
 		return $response;
 	}
 
-	error_log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
+	log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
 	return false;
 }
 
@@ -43,21 +42,21 @@ function sbd_get_beer_activity_by_id( $beer_id ) {
 
 	// Validate the beer ID.
 	if ( empty( $beer_id ) || ! is_numeric( $beer_id ) ) {
-		error_log( 'Invalid Beer ID provided.' );
+		log( 'Invalid Beer ID provided.' );
 		return false;
 	}
 
 	$params['limit'] = 10;
 
-	// Call the Untappd API using the untappd_api_request function
+	// Call the Untappd API using the untappd_api_request function.
 	$response = sbd_api_request( "beer/checkins/$beer_id/", $params );
 
-	// Return the response or handle errors
+	// Return the response or handle errors.
 	if ( $response ) {
 		return $response;
 	}
 
-	error_log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
+	log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
 	return false;
 }
 
@@ -83,7 +82,7 @@ function sbd_api_request( $endpoint, $params = array() ) {
 	$response = wp_remote_get(
 		$url,
 		array(
-			'timeout' => 10, // Timeout (seconds)
+			'timeout' => 10, // Timeout (seconds).
 			'headers' => array(
 				'Content-Type' => 'application/json',
 			),
@@ -92,7 +91,7 @@ function sbd_api_request( $endpoint, $params = array() ) {
 
 	// Error handling.
 	if ( is_wp_error( $response ) ) {
-		error_log( 'Untappd API request error: ' . $response->get_error_message() );
+		log( 'Untappd API request error: ' . $response->get_error_message() );
 		return false;
 	}
 
@@ -101,11 +100,11 @@ function sbd_api_request( $endpoint, $params = array() ) {
 	$http_code = wp_remote_retrieve_response_code( $response );
 
 	// Success.
-	if ( $http_code === 200 && ! empty( $body ) ) {
-		return json_decode( $body, true ); // Decoded JSON
+	if ( 200 === $http_code && ! empty( $body ) ) {
+		return json_decode( $body, true ); // Decoded JSON.
 	}
 
-	// Error log for non-200 responses
-	error_log( "Untappd API request failed: HTTP { $http_code }" );
+	// Error log for non-200 responses.
+	log( "Untappd API request failed: HTTP { $http_code }" );
 	return false;
 }
