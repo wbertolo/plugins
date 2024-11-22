@@ -5,6 +5,34 @@
  * @package SpruceBeerDashboard
  */
 
+
+/**
+ * Fetch beer information from the Untappd API by Beer ID.
+ *
+ * @param int $beer_id The beer ID.
+ * @return array|false Decoded JSON response or false on failure.
+ */
+function sbd_get_beer_by_id( $beer_id ) {
+
+	// Validate the beer ID.
+    if (empty( $beer_id ) || !is_numeric( $beer_id ) ) {
+        error_log( 'Invalid Beer ID provided.' );
+        return false;
+    }
+
+    // Call the Untappd API using the untappd_api_request function
+    $response = sbd_api_request( "beer/info/$beer_id" );
+
+    // Return the response or handle errors
+    if ( $response ) {
+        return $response;
+    }
+
+    error_log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
+    return false;
+}
+
+
 /**
  * Fetch data from the Untappd API.
  *
@@ -12,7 +40,7 @@
  * @param array $params Query parameters as an associative array.
  * @return array|false Decoded JSON response or false on failure.
  */
-function sbd_get_data( $endpoint, $params = [] ) {
+function sbd_api_request( $endpoint, $params = [] ) {
 
 	// Base variables.
 	$base_url = 'https://api.untappd.com/v4/';

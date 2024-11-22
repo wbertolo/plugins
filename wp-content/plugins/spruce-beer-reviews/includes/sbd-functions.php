@@ -31,7 +31,19 @@ register_activation_hook(__FILE__, 'sbd_activate');
  * @return string The rendered HTML content for the shortcode.
  */
 function sbd_shortcode() {
-	return sbd_render_template( sbd_get_data() );
+	return sbd_render_template( sbd_get_beer_by_id( 110569 ) );
+}
+
+
+/**
+ * Renders the plugin template with the given posts.
+ *
+ * @return string The rendered HTML content from the template.
+ */
+function sbd_render_template( $result ) {
+	ob_start();
+	include SBD__DIR . 'templates/sbd-template.php';
+	return ob_get_clean();
 }
 
 /**
@@ -41,17 +53,4 @@ function sbd_register_scripts() {
 	// Plugin 1 stylesheet.
 	wp_register_style( 'spruce-beer-dashboard-styles', PLUGIN_1__URL . 'dist/css/style.min.css', array(), filemtime( PLUGIN_1__DIR . 'dist/css/style.min.css' ) );
 	wp_enqueue_style( 'spruce-beer-dashboard-styles' );
-}
-
-
-/**
- * Renders the plugin template with the given posts.
- *
- * @return string The rendered HTML content from the template.
- */
-// @codingStandardsIgnoreLine
-function sbd_render_template( $posts ) {
-	ob_start();
-	include SBD__DIR . 'templates/sbd-template.php';
-	return ob_get_clean();
 }
