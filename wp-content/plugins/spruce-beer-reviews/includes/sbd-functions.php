@@ -11,7 +11,7 @@
  * Check for errors upon activation and log them to a file at the root of the plugin.
  */
 function sbd_activate() {
-    echo 'here'; die;
+
 	$log_file = PLUGIN_1__DIR . 'activation_errors.log';
 
 	set_error_handler( function( $severity, $message, $file, $line ) use ( $log_file ) {
@@ -31,7 +31,9 @@ register_activation_hook(__FILE__, 'sbd_activate');
  * @return string The rendered HTML content for the shortcode.
  */
 function sbd_shortcode() {
-	return sbd_render_template( sbd_get_beer_by_id( 110569 ) );
+	$beer_info = sbd_get_beer_by_id( 110569 );
+	$beer_activity = sbd_get_beer_activity_by_id( 110569 );
+	return sbd_render_template( $beer_info, $beer_activity );
 }
 
 
@@ -40,7 +42,7 @@ function sbd_shortcode() {
  *
  * @return string The rendered HTML content from the template.
  */
-function sbd_render_template( $result ) {
+function sbd_render_template( $beer_info, $beer_activity ) {
 	ob_start();
 	include SBD__DIR . 'templates/sbd-template.php';
 	return ob_get_clean();
