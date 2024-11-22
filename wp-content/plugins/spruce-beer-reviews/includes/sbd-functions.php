@@ -6,32 +6,12 @@
  */
 
 /**
- * Activation Hook.
- *
- * Check for errors upon activation and log them to a file at the root of the plugin.
- */
-function sbd_activate() {
-
-	$log_file = PLUGIN_1__DIR . 'activation_errors.log';
-
-	set_error_handler( function( $severity, $message, $file, $line ) use ( $log_file ) {
-        $log_message = date( '[Y-m-d H:i:s]' ) . " ERROR: { $message } in { $file } on line { $line }\n";
-        file_put_contents($log_file, $log_message, FILE_APPEND);
-    });
-
-	restore_error_handler();
-
-}
-
-register_activation_hook(__FILE__, 'sbd_activate');
-
-/**
  * Gets the posts.
  *
  * @return string The rendered HTML content for the shortcode.
  */
 function sbd_shortcode() {
-	$beer_info = sbd_get_beer_by_id( 110569 );
+	$beer_info     = sbd_get_beer_by_id( 110569 );
 	$beer_activity = sbd_get_beer_activity_by_id( 110569 );
 	return sbd_render_template( $beer_info, $beer_activity );
 }
@@ -40,8 +20,12 @@ function sbd_shortcode() {
 /**
  * Renders the plugin template with the given posts.
  *
+ * @param array $beer_info      Information about the beer (e.g., beer details like name, ABV, etc.).
+ * @param array $beer_activity  Activity related to the beer (e.g., user ratings, reviews, etc.).
+ *
  * @return string The rendered HTML content from the template.
  */
+// @codingStandardsIgnoreLine
 function sbd_render_template( $beer_info, $beer_activity ) {
 	ob_start();
 	include SBD__DIR . 'templates/sbd-template.php';
@@ -53,6 +37,6 @@ function sbd_render_template( $beer_info, $beer_activity ) {
  */
 function sbd_register_scripts() {
 	// Plugin 1 stylesheet.
-	wp_register_style( 'spruce-beer-dashboard-styles', PLUGIN_1__URL . 'dist/css/style.min.css', array(), filemtime( PLUGIN_1__DIR . 'dist/css/style.min.css' ) );
+	wp_register_style( 'spruce-beer-dashboard-styles', SBD__URL . 'dist/css/style.min.css', array(), filemtime( SBD__DIR . 'dist/css/style.min.css' ) );
 	wp_enqueue_style( 'spruce-beer-dashboard-styles' );
 }

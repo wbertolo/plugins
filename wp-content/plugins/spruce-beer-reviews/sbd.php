@@ -20,13 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'SBD_VERSION', '1.0.0' );
 define( 'SBD__DIR', plugin_dir_path( __FILE__ ) ); // path.
 define( 'SBD__URL', plugin_dir_url( __FILE__ ) ); // url.
-define('UNTAPPD_API_CLIENT_ID', '3B699F2A6042F01F5F198865B533DAE74E4498EF');
-define('UNTAPPD_API_CLIENT_SECRET', '6A750CCE8AC023F996133E376E3B58EC5478BCD5');
+define( 'UNTAPPD_API_CLIENT_ID', '3B699F2A6042F01F5F198865B533DAE74E4498EF' );
+define( 'UNTAPPD_API_CLIENT_SECRET', '6A750CCE8AC023F996133E376E3B58EC5478BCD5' );
 
 // Includes.
 require_once SBD__DIR . 'includes/api.php';
 require_once SBD__DIR . 'includes/sbd-functions.php';
-require_once SBD__DIR . 'includes/class-sbd.php';
+require_once SBD__DIR . 'includes/class-sprucebeerdashboard.php';
 
 
 /**
