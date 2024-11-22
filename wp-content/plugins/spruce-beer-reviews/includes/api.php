@@ -15,7 +15,7 @@ function sbd_get_beer_by_id( $beer_id ) {
 
 	// Validate the beer ID.
 	if ( empty( $beer_id ) || ! is_numeric( $beer_id ) ) {
-		log( 'Invalid Beer ID provided.' );
+		sbd_write_log( 'Invalid Beer ID provided.' );
 		return false;
 	}
 
@@ -27,7 +27,7 @@ function sbd_get_beer_by_id( $beer_id ) {
 		return $response;
 	}
 
-	log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
+	sbd_write_log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
 	return false;
 }
 
@@ -42,7 +42,7 @@ function sbd_get_beer_activity_by_id( $beer_id ) {
 
 	// Validate the beer ID.
 	if ( empty( $beer_id ) || ! is_numeric( $beer_id ) ) {
-		log( 'Invalid Beer ID provided.' );
+		sbd_write_log( 'Invalid Beer ID provided.' );
 		return false;
 	}
 
@@ -56,7 +56,7 @@ function sbd_get_beer_activity_by_id( $beer_id ) {
 		return $response;
 	}
 
-	log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
+	sbd_write_log( "Failed to fetch beer info for Beer ID: { $beer_id }" );
 	return false;
 }
 
@@ -91,7 +91,7 @@ function sbd_api_request( $endpoint, $params = array() ) {
 
 	// Error handling.
 	if ( is_wp_error( $response ) ) {
-		log( 'Untappd API request error: ' . $response->get_error_message() );
+		sbd_write_log( 'Untappd API request error: ' . $response->get_error_message() );
 		return false;
 	}
 
@@ -105,6 +105,6 @@ function sbd_api_request( $endpoint, $params = array() ) {
 	}
 
 	// Error log for non-200 responses.
-	log( "Untappd API request failed: HTTP { $http_code }" );
+	sbd_write_log( "Untappd API request failed: HTTP { $http_code }" );
 	return false;
 }
