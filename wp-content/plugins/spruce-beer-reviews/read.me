@@ -1,0 +1,36 @@
+# Garrison Brewing's Spruce Beer Dashboard
+
+## Description
+A one-page dashboard for their Garrison Brewing's Spruce Beer data, ratings, and latest reviews.
+
+## Installation
+1. Drop the plugin folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. The `dist` CSS and JS files are part of the repo, so running npm is unnecessary.
+
+## Usage
+1. In any WordPress page, insert the shortcode `[spruce-beer-dashboard]`.
+2. Load the page. It should display the first 10 posts from https://followthislight.com/blog/. 
+
+## If you want to use PHP Code Sniffer
+1. Run `composer install`.
+2. Run `composer phpcs`.
+3. Confirm no errors are logged. The only exception is errors related to the CLRF/LF format (always logged to line 1), depending on your OS. 
+This plugin was originally developed in Windows. 
+
+## In case you need to build CSS
+1. run `npm i` to install the necessary node modules.
+2. run `npm run build`.
+
+## Notes
+1. If errors happen during the activation of the plugin, WordPress will save logs to the file `debug.log` on the `wp-content` folder.
+2. Across the code, SBD stands for Spruce Beer Dashboard. This abbreviation was used to keep function and files naming short 
+while preventing name colisions (additional measure on top of @package).
+3. Given the nature of this assessment, the API keys are being stored in the plugin main file. 
+This is NOT the optimal way of storing such critical secure information, 
+but it will allow the plugin to be deployed into TBK's WordPress installations without the need of further configuration.
+
+
+## Changelog
+### 1.0.0
+- Initial release.
