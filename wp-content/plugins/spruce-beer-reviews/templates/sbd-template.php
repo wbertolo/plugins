@@ -23,14 +23,22 @@
 			<h2><?php echo esc_html( $beer[ 'beer_name' ] ); ?></h2>
 			<p>Brewery: <?php echo esc_html( $beer[ 'brewery' ][ 'brewery_name' ] ); ?></p>
 			
-			<img src="<?php echo esc_html( $beer[ 'media' ][ 'items' ][0][ 'beer' ][ 'beer_label' ] ); ?>" />
-			<img src="<?php echo esc_html( $beer[ 'brewery' ][ 'brewery_label' ] ); ?>" />
+			<img src="<?php echo esc_attr( $beer[ 'beer_label' ] ); ?>" />
+			<img src="<?php echo esc_attr( $beer[ 'brewery' ][ 'brewery_label' ] ); ?>" />
 			
 			<p>Style: <?php echo esc_html( $beer[ 'beer_style' ] ); ?></p>
 			<p>Alcohol Content: <?php echo esc_html( $beer[ 'beer_abv' ] ); ?></p>
 			<p>IBU (Bitterness): <?php echo esc_html( $beer[ 'beer_ibu' ] ); ?></p>
 			<p>Average Rating: <?php echo esc_html( round( $beer[ 'rating_score' ], 2 ) ); ?>/5</p>
 
+			<!-- Images -->
+			<?php $media_items = $beer[ 'media' ][ 'items' ] ?>
+			
+			<?php foreach( $media_items as $media_item ) : ?>
+				<img src="<?php echo esc_attr( $media_item[ 'photo' ][ 'photo_img_sm' ] ); ?>" />
+			<?php endforeach; ?>
+
+			 
 
 			<!-- Reviews -->
 			<?php $reviews; ?>
